@@ -112,7 +112,7 @@ namespace Longan {
     //% weight=88
     //% blockId=setMotorSpeed block="Set motor %motor speed to %speed"
     //% speed.min=-100 speed.max=100
-    //% subcategory=Motor
+    //% subcategory=Move group="Basic"
     export function setMotorSpeed(motor: MotorList, speed: number): void {
         let buf = pins.createBuffer(4);
         switch (motor) {
@@ -151,7 +151,7 @@ namespace Longan {
     //% blockId=setAllMotor block="set motor M1 speed %m1speed M2 speed %m2speed"
     //% m1speed.min=-100 m1speed.max=100
     //% m2speed.min=-100 m2speed.max=100
-    //% subcategory=Motor
+    //% subcategory=Move group="Basic"
     export function setAllMotor(m1speed: number, m2speed: number): void {
         setMotorSpeed(MotorList.M1, m1speed)
         setMotorSpeed(MotorList.M2, m2speed)
@@ -163,7 +163,7 @@ namespace Longan {
      */
     //% weight=86
     //% blockId=stopMotor block="Stop motor %motor"
-    //% subcategory=Motor
+    //% subcategory=Move group="Basic"
     export function stopMotor(motor: MotorList): void {
         setMotorSpeed(motor, 0)
     }
@@ -172,7 +172,7 @@ namespace Longan {
      */
     //% weight=85
     //% blockId=stopAllMotor  block="Stop all motor"
-    //% subcategory=Motor
+    //% subcategory=Move group="Basic"
     export function stopAllMotor(): void {
         setMotorSpeed(MotorList.M1, 0)
         setMotorSpeed(MotorList.M2, 0)
@@ -186,7 +186,7 @@ namespace Longan {
     //% weight=84
     //% blockId=setServoAngel block="Set servo %servo angel to %angle"
     //% angle.shadow="protractorPicker"
-    //% subcategory=Motor
+    //% subcategory=Move group="Basic"
     export function setServoAngel(servo: ServoList, angel: number): void {
         let buf = pins.createBuffer(4);
         if (servo == 0) {
@@ -282,7 +282,7 @@ namespace Longan {
     * @param RightRear A servo in the ServoList , eg: wuKong.ServoList.S4
     */
     //% block="Set Mecanum wheel|Left Front %LeftFront|Left Rear %LeftRear|Right Front %RightFront|Right Rear %RightRear"
-    //% subcategory=Motor group="Basic"
+    //% subcategory=Move group="Mecanum"
     export function mecanumWheel(LeftFront: ServoList, LeftRear: ServoList, RightFront: ServoList, RightRear: ServoList): void {
         LeftFront_def = LeftFront
         LeftRear_def = LeftRear
@@ -294,7 +294,7 @@ namespace Longan {
     * TODO: Set servo speed
     */
     //% block="Set %wheel wheel speed to %speed"
-    //% subcategory=Motor group="Basic"
+    //% subcategory=Move group="Mecanum"
     export function mecanumSpeed(wheel: WheelList, speed: number): void {
         let buf = pins.createBuffer(4)
         if (wheel < 2) {
@@ -469,7 +469,7 @@ namespace Longan {
     * TODO: Set side servo speed
     */
     //% block="Set %wheelside wheel speed to %speed"
-    //% subcategory=Motor group="Basic"
+    //% subcategory=Move group="Mecanum"
     export function mecanumSideRun(wheelside: SideList, speed: number): void {
         switch (wheelside) {
             case 0:
@@ -486,7 +486,7 @@ namespace Longan {
    * TODO: Set car runs direction
    */
     //% block="Set Mecanum car runs direction %type with speed %speed"
-    //% subcategory=Motor group="Basic"
+    //% subcategory=Move group="Mecanum"
     //% type.fieldEditor="gridpicker"
     //% type.fieldOptions.columns=3
     //% speed.min=0 speed.max=100
@@ -558,7 +558,7 @@ namespace Longan {
     * TODO: Set Mecanum car Stop
     */
     //% block="Set Mecanum car Stop"
-    //% subcategory=Motor group="Basic"
+    //% subcategory=Move group="Mecanum"
     export function mecanumStop(): void {
         setServoAngel(LeftFront_def, 90)
         setServoAngel(LeftRear_def, 90)
@@ -569,7 +569,7 @@ namespace Longan {
    * TODO: Set car spin 
    */
     //% block="Set Mecanum car spin %Turn with speed %speed"
-    //% subcategory=Motor group="Basic"
+    //% subcategory=Move group="Mecanum"
     //% Turn.fieldEditor="gridpicker"
     //% Turn.fieldOptions.columns=2
     //% speed.min=0 speed.max=100
@@ -599,7 +599,7 @@ namespace Longan {
    * TODO: Set car drift
    */
     //% block="Set Mecanum car drift %Turn"
-    //% subcategory=Motor group="Basic"
+    //% subcategory=Move group="Mecanum"
     //% Turn.fieldEditor="gridpicker"
     //% Turn.fieldOptions.columns=2
     export function mecanumDrift(Turn: TurnList): void {
