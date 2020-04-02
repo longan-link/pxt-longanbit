@@ -1,7 +1,7 @@
 /**
 * Functions to longan
 */
-//% color=#f6fad4  icon="\uf0c2" block="Longan" blockId="Longan"
+//% color=#ffffff  icon="\uf0c2" block="Longan" blockId="Longan"
 namespace Longan {
     const board_address = 0x10
 	/**
