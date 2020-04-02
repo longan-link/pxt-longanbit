@@ -151,7 +151,7 @@ namespace Longan {
     //% blockId=setAllMotor block="set motor M1 speed %m1speed M2 speed %m2speed"
     //% m1speed.min=-100 m1speed.max=100
     //% m2speed.min=-100 m2speed.max=100
-    //% subcategory=Move group="Basic"
+    //% subcategory=Input group="Basic"
     export function setAllMotor(m1speed: number, m2speed: number): void {
         setMotorSpeed(MotorList.M1, m1speed)
         setMotorSpeed(MotorList.M2, m2speed)
@@ -163,7 +163,7 @@ namespace Longan {
      */
     //% weight=86
     //% blockId=stopMotor block="Stop motor %motor"
-    //% subcategory=Move group="Basic"
+    //% subcategory=Sensor group="Basic"
     export function stopMotor(motor: MotorList): void {
         setMotorSpeed(motor, 0)
     }
