@@ -282,7 +282,7 @@ namespace Longan {
     * @param RightRear A servo in the ServoList , eg: wuKong.ServoList.S4
     */
     //% block="Set Mecanum wheel|Left Front %LeftFront|Left Rear %LeftRear|Right Front %RightFront|Right Rear %RightRear"
-    //% subcategory=Motor
+    //% subcategory=Motor group="Basic"
     export function mecanumWheel(LeftFront: ServoList, LeftRear: ServoList, RightFront: ServoList, RightRear: ServoList): void {
         LeftFront_def = LeftFront
         LeftRear_def = LeftRear
@@ -294,7 +294,7 @@ namespace Longan {
     * TODO: Set servo speed
     */
     //% block="Set %wheel wheel speed to %speed"
-    //% subcategory=Motor
+    //% subcategory=Motor group="Basic"
     export function mecanumSpeed(wheel: WheelList, speed: number): void {
         let buf = pins.createBuffer(4)
         if (wheel < 2) {
@@ -469,7 +469,7 @@ namespace Longan {
     * TODO: Set side servo speed
     */
     //% block="Set %wheelside wheel speed to %speed"
-    //% subcategory=Motor
+    //% subcategory=Motor group="Basic"
     export function mecanumSideRun(wheelside: SideList, speed: number): void {
         switch (wheelside) {
             case 0:
@@ -486,7 +486,7 @@ namespace Longan {
    * TODO: Set car runs direction
    */
     //% block="Set Mecanum car runs direction %type with speed %speed"
-    //% subcategory=Motor
+    //% subcategory=Motor group="Basic"
     //% type.fieldEditor="gridpicker"
     //% type.fieldOptions.columns=3
     //% speed.min=0 speed.max=100
@@ -558,7 +558,7 @@ namespace Longan {
     * TODO: Set Mecanum car Stop
     */
     //% block="Set Mecanum car Stop"
-    //% subcategory=Motor
+    //% subcategory=Motor group="Basic"
     export function mecanumStop(): void {
         setServoAngel(LeftFront_def, 90)
         setServoAngel(LeftRear_def, 90)
@@ -569,7 +569,7 @@ namespace Longan {
    * TODO: Set car spin 
    */
     //% block="Set Mecanum car spin %Turn with speed %speed"
-    //% subcategory=Motor
+    //% subcategory=Motor group="Basic"
     //% Turn.fieldEditor="gridpicker"
     //% Turn.fieldOptions.columns=2
     //% speed.min=0 speed.max=100
@@ -599,7 +599,7 @@ namespace Longan {
    * TODO: Set car drift
    */
     //% block="Set Mecanum car drift %Turn"
-    //% subcategory=Motor
+    //% subcategory=Motor group="Basic"
     //% Turn.fieldEditor="gridpicker"
     //% Turn.fieldOptions.columns=2
     export function mecanumDrift(Turn: TurnList): void {
