@@ -15,7 +15,7 @@ enum OnOff {
 /**
 * Functions to longan
 */
-//% color=#000000  icon="\uf0b2" block="Longan" blockId="Longan"
+//% color=#0fbc11  icon="\uf0b2" block="Longan" blockId="Longan"
 namespace Longan {
     const board_address = 0x10
 
