@@ -1,6 +1,6 @@
 {
     "name": "pxt-longanbit",
-    "version": "master",
+    "version": "0.0.1",
     "description": "The all-in-one kit LonganBit (Longan STEM kit)（龙眼魔法STEAM教育套件）, supporting education of robotics and AIoT, produced by Elite EdTech Co.ltd.",
     "dependencies": {
         "core": "*",
