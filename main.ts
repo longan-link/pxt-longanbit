@@ -333,7 +333,7 @@ namespace Longan {
     //% blockId=setAllMotor block="set motor M1 speed %m1speed M2 speed %m2speed"
     //% m1speed.min=-100 m1speed.max=100
     //% m2speed.min=-100 m2speed.max=100
-    //% subcategory=Input group="Basic"
+    //% subcategory=Move group="Basic"
     export function setAllMotor(m1speed: number, m2speed: number): void {
         setMotorSpeed(MotorList.M1, m1speed)
         setMotorSpeed(MotorList.M2, m2speed)
@@ -345,7 +345,7 @@ namespace Longan {
      */
     //% weight=86
     //% blockId=stopMotor block="Stop motor %motor"
-    //% subcategory=Sensor group="Basic"
+    //% subcategory=Move group="Basic"
     export function stopMotor(motor: MotorList): void {
         setMotorSpeed(motor, 0)
     }
@@ -1074,7 +1074,6 @@ namespace Longan {
      * get dht11 temperature and humidity Value
      * @param dht11pin describe parameter here, eg: DigitalPin.P15     */
     //% subcategory=Sensor group="Sensor"
-    //% advanced=true
     //% blockId="readdht11" block="value of dht11 %dht11type| at pin %dht11pin"
     export function dht11value(dht11type: DHT11Type, dht11pin: DigitalPin): number {
 
