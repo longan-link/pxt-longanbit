@@ -1217,7 +1217,7 @@ namespace Longan {
     /**
     * toggle fan
     */
-    //% blockId=Relay block="at pin %fanpin Relay toggle to %Relaystate"
+    //% blockId=fan block="at pin %fanpin Relay toggle to %Relaystate"
     //% fanpin.fieldEditor="gridpicker"
     //% fanpin.fieldOptions.columns=2
     //% Relaystate.fieldEditor="gridpicker"

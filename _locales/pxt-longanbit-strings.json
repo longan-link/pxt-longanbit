@@ -47,7 +47,7 @@
   "Longan.WheelList.RightRear_def|block": "Right Rear",
   "Longan.crashSensorSetup|block": "Setup crash sensor at pin %crashpin",
   "Longan.crashSensor|block": "crash sensor pressed",
-  "Longan.dht11value|block": "value of dht11 %dht11type| at pin %dht11pin",
+  "Longan.dht11value|block": "at pin %dht11pin value of dht11 %dht11type|",
   "Longan.fan|block": "at pin %fanpin Relay toggle to %Relaystate",
   "Longan.lightIntensity|block": "Set light intensity to %light",
   "Longan.mecanumDrift|block": "Set Mecanum car drift %Turn",
