@@ -45,7 +45,7 @@
   "Longan.WheelList.LeftRear_def|block": "左后",
   "Longan.WheelList.RightFront_def|block": "右前",
   "Longan.WheelList.RightRear_def|block": "右后",
-  "Longan.crashSensorSetup|block": "设置碰撞传感器的连接到 %crashpin",
+  "Longan.crashSensorSetup|block": "设置连接到 %crashpin的碰撞传感器",
   "Longan.crashSensor|block": "碰撞传感器被按下",
   "Longan.dht11value|block": "连接至 %dht11pin 的DHT11传感器的 %dht11type|值",
   "Longan.fan|block": "连接接到 %fanpin 的风扇设置为 %Relaystate",

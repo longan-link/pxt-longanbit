@@ -1001,8 +1001,8 @@ namespace Longan {
     */
     //% subcategory=Input group="Input"
     //% blockId=octopus_adkeyboard weight=90 blockGap=30
-    //% block="key %k | is pressed on ADKeyboard at pin %p"
-    export function ADKeyboard(k: ADKeys, p: AnalogPin): boolean {
+    //% block="ADKeyboard at pin %p | key %k is pressed "
+    export function ADKeyboard(p: AnalogPin , k: ADKeys): boolean {
         let a: number = pins.analogReadPin(p);
         if (a < 10 && k == 1) {
             return true;
@@ -1036,8 +1036,8 @@ namespace Longan {
      * @param pin describe parameter here, eg: DigitalPin.P16
      */
     //% subcategory=Sensor group="Sensor"
-    //% blockId=readsonarbit block="Ultrasonic distance in unit %distance_unit |at|pin %pin"
-    export function sonarbit_distance(distance_unit: Distance_Unit, pin: DigitalPin): number {
+    //% blockId=readsonarbit block="Ultrasonic at|pin %pin distance in unit %distance_unit "
+    export function sonarbit_distance(pin: DigitalPin , distance_unit: Distance_Unit): number {
 
         // send pulse
         pins.setPull(pin, PinPullMode.PullNone)
@@ -1075,8 +1075,8 @@ namespace Longan {
      * get dht11 temperature and humidity Value
      * @param dht11pin describe parameter here, eg: DigitalPin.P15     */
     //% subcategory=Sensor group="Sensor"
-    //% blockId="readdht11" block="value of dht11 %dht11type| at pin %dht11pin"
-    export function dht11value(dht11type: DHT11Type, dht11pin: DigitalPin): number {
+    //% blockId="readdht11" block="at pin %dht11pin value of dht11 %dht11type|"
+    export function dht11value(dht11pin: DigitalPin , dht11type: DHT11Type): number {
 
         pins.digitalWritePin(dht11pin, 0)
         basic.pause(18)

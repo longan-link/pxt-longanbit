@@ -1,5 +1,5 @@
 {
-  "Longan.ADKeyboard|block": "key %k | is pressed on ADKeyboard at pin %p",
+  "Longan.ADKeyboard|block": "ADKeyboard at pin %p | key %k is pressed ",
   "Longan.BME280_state.BME280_altitude|block": "altitude(M)",
   "Longan.BME280_state.BME280_humidity|block": "humidity(0~100)",
   "Longan.BME280_state.BME280_pressure|block": "pressure(hPa)",
@@ -62,7 +62,7 @@
   "Longan.setLightMode|block": "Set light mode to %mode",
   "Longan.setMotorSpeed|block": "Set motor %motor speed to %speed",
   "Longan.setServoAngel|block": "Set servo %servo angel to %angle",
-  "Longan.sonarbit_distance|block": "Ultrasonic distance in unit %distance_unit |at|pin %pin",
+  "Longan.sonarbit_distance|block": "Ultrasonic at|pin %pin distance in unit %distance_unit ",
   "Longan.stopAllMotor|block": "Stop all motor",
   "Longan.stopMotor|block": "Stop motor %motor",
   "Longan|block": "Longan",
