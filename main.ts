@@ -8,7 +8,9 @@ enum ADKeys {
 }
 
 enum OnOff {
+    //% block="OFF"
     Off = 0,
+    //% block="ON"
     On = 1
 }
 
