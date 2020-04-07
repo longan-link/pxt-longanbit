@@ -18,7 +18,6 @@ enum OnOff {
 //% color=#0fbc11  icon="\uf0b2" block="Longan" blockId="Longan"
 namespace Longan {
     const board_address = 0x10
-
     
     // BME280 Addresses
     let BME280_I2C_ADDR = 0x76
@@ -1190,6 +1189,48 @@ namespace Longan {
                 return 0
         }
         return 0;
+    }
+
+    /**
+    * toggle Relay
+    */
+    //% blockId=Relay block="at pin %Rjpin Relay toggle to %Relaystate"
+    //% Rjpin.fieldEditor="gridpicker"
+    //% Rjpin.fieldOptions.columns=2
+    //% Relaystate.fieldEditor="gridpicker"
+    //% Relaystate.fieldOptions.columns=2
+    //% subcategory=Output
+    export function Relay(Rjpin: DigitalPin, Relaystate: OnOff): void {
+        let pin = Rjpin
+        switch (Relaystate) {
+            case OnOff.On:
+                pins.digitalWritePin(pin, 1)
+                break;
+            case OnOff.Off:
+                pins.digitalWritePin(pin, 0)
+                break;
+        }
+    }
+
+    /**
+    * toggle fan
+    */
+    //% blockId=Relay block="at pin %fanpin Relay toggle to %Relaystate"
+    //% fanpin.fieldEditor="gridpicker"
+    //% fanpin.fieldOptions.columns=2
+    //% Relaystate.fieldEditor="gridpicker"
+    //% Relaystate.fieldOptions.columns=2
+    //% subcategory=Output
+    export function fan(fanpin: DigitalPin, Relaystate: OnOff): void {
+        let pin = fanpin
+        switch (Relaystate) {
+            case OnOff.On:
+                pins.digitalWritePin(pin, 1)
+                break;
+            case OnOff.Off:
+                pins.digitalWritePin(pin, 0)
+                break;
+        }
     }
 
 
