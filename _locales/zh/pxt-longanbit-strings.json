@@ -1,5 +1,5 @@
 {
-  "Longan.ADKeyboard|block": "连接至 %p 的ADKey 键盘模块的按键 %k 被按下 ",
+  "Longan.ADKeyboard|block": "连接至 %p 的 ADKey 键盘模块的按键 %k 被按下 ",
   "Longan.BME280_state.BME280_altitude|block": "高度(M)",
   "Longan.BME280_state.BME280_humidity|block": "湿度(0~100)",
   "Longan.BME280_state.BME280_pressure|block": "压强(hPa)",
