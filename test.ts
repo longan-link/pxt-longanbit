@@ -1,1 +1,8 @@
-// tests go here; this will not be compiled when this package is used as a library
+Longan.crashSensorSetup(DigitalPin.P0)
+basic.forever(function () {
+    if (Longan.crashSensor()) {
+        Longan.stopMotor(Longan.MotorList.M1)
+    } else {
+        basic.showNumber(Longan.ReadSoilHumidity(AnalogPin.P1))
+    }
+})

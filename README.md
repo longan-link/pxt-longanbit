@@ -1,21 +1,29 @@
-# pxt-longanbit
+![](https://img.shields.io/badge/Plantfrom-Micro%3Abit-red) ![](https://img.shields.io/travis/com/longan-link/pxt-longanbit) ![](https://img.shields.io/github/v/release/longan-link/pxt-longanbit) ![](https://img.shields.io/github/last-commit/longan-link/pxt-longanbit) ![](https://img.shields.io/github/languages/top/longan-link/pxt-longanbit) ![](https://img.shields.io/github/issues/longan-link/pxt-longanbit) ![](https://img.shields.io/github/license/longan-link/pxt-longanbit) 
+
+# Longanbit Package
+
+![](/images.png/)
+
+This extension is designed to programme and drive the Longanbit, You can [get longanbit from the here](https://www.longan-link.com/store)
+
+## Code Example
+```JavaScript
+
+Longan.crashSensorSetup(DigitalPin.P0)
+basic.forever(function () {
+    if (Longan.crashSensor()) {
+        Longan.stopMotor(Longan.MotorList.M1)
+    } else {
+        basic.showNumber(Longan.ReadSoilHumidity(AnalogPin.P1))
+    }
+})
 
 
-
-## TODO
-
-- [ ] Add a reference for your blocks here
-- [ ] Add "icon.png" image (300x200) in the root folder
-- [ ] Add "- beta" to the GitHub project description if you are still iterating it.
-- [ ] Turn on your automated build on https://travis-ci.org
-- [ ] Use "pxt bump" to create a tagged release on GitHub
-- [ ] On GitHub, create a new file named LICENSE. Select the MIT License template.
-- [ ] Get your package reviewed and approved https://makecode.microbit.org/extensions/approval
-
-Read more at https://makecode.microbit.org/extensions
-
+```
 ## Supported targets
 
 * for PXT/microbit
-(The metadata above is needed for package search.)
+
+## License
+MIT
 
