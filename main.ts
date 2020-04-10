@@ -20,7 +20,7 @@ enum OnOff {
 //% color=#3669a6  icon="\uf0b2" block="Longan" blockId="Longan"
 namespace Longan {
     const board_address = 0x10
-    
+
     // BME280 Addresses
     let BME280_I2C_ADDR = 0x76
     let dig_T1 = getUInt16LE(0x88)
@@ -195,7 +195,7 @@ namespace Longan {
         //% block="OFF"
         OFF
     }
-    
+
 	/**
 	* MotorList
 	*/
@@ -226,65 +226,7 @@ namespace Longan {
         //% block="S7" enumval=7
         S7
     }
-    /**
-     * TODO: Set the on-board LED display mode. 
-     * @param mode breath or off , eg: LightMode.BREATH
-     */
-    //% weight=90
-    //% blockId="setLightMode" block="Set light mode to %mode"
-    //% subcategory=Output
-    export function setLightMode(mode: LightMode): void {
-        let buff = pins.createBuffer(4);
-        switch (mode) {
-            case LightMode.BREATH:
-                buff[0] = 0x11;
-                buff[1] = 0x00;
-                buff[2] = 0;
-                buff[3] = 0;
-                pins.i2cWriteBuffer(board_address, buff);
-                buff[0] = 0x12;
-                buff[1] = 150;
-                basic.pause(100);
-                pins.i2cWriteBuffer(board_address, buff);
-                break;
-            case LightMode.OFF:
-                buff[0] = 0x12;
-                buff[1] = 0;
-                buff[2] = 0;
-                buff[3] = 0;
-                pins.i2cWriteBuffer(board_address, buff);
-                buff[0] = 0x11;
-                buff[1] = 160;
-                basic.pause(100);
-                pins.i2cWriteBuffer(board_address, buff);
-                break;
-            default:
-                break;
-        }
-    }
 
-
-
-	/**
-    * TODO: Set the brightness of on-board LED lamp.
-    * @param light brightness, eg: 100
-    */
-    //% weight=89
-    //% blockId=lightIntensity block="Set light intensity to %light"
-    //% light.min=0 light.max=100
-    //% subcategory=Output
-    export function lightIntensity(light: number): void {
-        let buff = pins.createBuffer(4);
-        buff[0] = 0x12;
-        buff[1] = light;
-        buff[2] = 0;
-        buff[3] = 0;
-        pins.i2cWriteBuffer(board_address, buff);
-        basic.pause(100);
-        buff[0] = 0x11;
-        buff[1] = 160;
-        pins.i2cWriteBuffer(board_address, buff);
-    }
 
 
 	/**
@@ -803,14 +745,14 @@ namespace Longan {
     }
 
     let Reference_VOLTAGE = 3100
-    
+
     let crashSensorPin: DigitalPin
 
     /**
     * TODO: Crash Sensor Setup
     */
     //% blockId=octopus_crashsetup  blockGap=10
-    //% subcategory=Sensor group="Sensor"
+    //% subcategory=Sensor  
     //% block="Setup crash sensor at pin %crashpin"
     export function crashSensorSetup(crashpin: DigitalPin): void {
         crashSensorPin = crashpin;
@@ -823,7 +765,7 @@ namespace Longan {
     * TODO: Checks whether the crash sensor is currently pressed.
     */
     //% blockId=octopus_crash  blockGap=30
-    //% subcategory=Sensor group="Sensor"
+    //% subcategory=Sensor
     //% block="crash sensor pressed"
     export function crashSensor(): boolean {
         let a: number = pins.digitalReadPin(crashSensorPin);
@@ -838,7 +780,7 @@ namespace Longan {
     * TODO: get soil moisture(0~100%)
     * @param soilmoisturepin describe parameter here, eg: AnalogPin.P1
     */
-    //% subcategory=Sensor group="Sensor"
+    //% subcategory=Sensor  
     //% blockId="readsoilmoisture" block="value of soil moisture(0~100) at pin %soilhumiditypin"
     export function ReadSoilHumidity(soilmoisturepin: AnalogPin): number {
         let voltage = 0;
@@ -859,7 +801,7 @@ namespace Longan {
     * TODO: get light intensity(0~100%)
     * @param lightintensitypin describe parameter here, eg: AnalogPin.P1
     */
-    //% subcategory=Sensor group="Sensor"
+    //% subcategory=Sensor  
     //% blockId="readlightintensity" block="value of light intensity(0~100) at pin %lightintensitypin"
     export function ReadLightIntensity(lightintensitypin: AnalogPin): number {
         let voltage = 0;
@@ -882,7 +824,7 @@ namespace Longan {
     * TODO: get noise(dB)
     * @param noisepin describe parameter here, eg: AnalogPin.P1
     */
-    //% subcategory=Sensor group="Sensor"
+    //% subcategory=Sensor  
     //% blockId="readnoise" block="value of noise(dB) at pin %noisepin"
     export function ReadNoise(noisepin: AnalogPin): number {
         let level = 0
@@ -1000,9 +942,9 @@ namespace Longan {
     Checks if the specified key on the ADkeyboard is pressed.
     */
     //% subcategory=Input group="Input"
-    //% blockId=octopus_adkeyboard weight=90 blockGap=30
+    //% blockId=octopus_adkeyboard weight=90
     //% block="ADKeyboard at pin %p | key %k is pressed "
-    export function ADKeyboard(p: AnalogPin , k: ADKeys): boolean {
+    export function ADKeyboard(p: AnalogPin, k: ADKeys): boolean {
         let a: number = pins.analogReadPin(p);
         if (a < 10 && k == 1) {
             return true;
@@ -1020,7 +962,7 @@ namespace Longan {
     /**
    Checks whether the motion sensor is currently detecting any motion.
      */
-    //% subcategory=Sensor group="Sensor"
+    //% subcategory=Sensor  
     //% blockId=octopus_pir weight=80 blockGap=30
     //% block="motion detector at pin %p | detects motion"
     export function PIR(p: DigitalPin): boolean {
@@ -1035,9 +977,9 @@ namespace Longan {
      * @param distance_unit describe parameter here, eg: 1
      * @param pin describe parameter here, eg: DigitalPin.P16
      */
-    //% subcategory=Sensor group="Sensor"
+    //% subcategory=Sensor  
     //% blockId=readsonarbit block="Ultrasonic at|pin %pin distance in unit %distance_unit "
-    export function sonarbit_distance(pin: DigitalPin , distance_unit: Distance_Unit): number {
+    export function sonarbit_distance(pin: DigitalPin, distance_unit: Distance_Unit): number {
 
         // send pulse
         pins.setPull(pin, PinPullMode.PullNone)
@@ -1070,13 +1012,13 @@ namespace Longan {
 
     }
 
-    
+
     /**
      * get dht11 temperature and humidity Value
      * @param dht11pin describe parameter here, eg: DigitalPin.P15     */
-    //% subcategory=Sensor group="Sensor"
+    //% subcategory=Sensor  
     //% blockId="readdht11" block="at pin %dht11pin value of dht11 %dht11type|"
-    export function dht11value(dht11pin: DigitalPin , dht11type: DHT11Type): number {
+    export function dht11value(dht11pin: DigitalPin, dht11type: DHT11Type): number {
 
         pins.digitalWritePin(dht11pin, 0)
         basic.pause(18)
@@ -1151,7 +1093,7 @@ namespace Longan {
     * get water level value (0~100)
     * @param waterlevelpin describe parameter here, eg: AnalogPin.P1
     */
-    //% subcategory=Sensor group="Sensor"
+    //% subcategory=Sensor  
     //% blockId="readWaterLevel" block="value of water level(0~100) at pin %waterlevelpin"
     export function ReadWaterLevel(waterlevelpin: AnalogPin): number {
         let voltage = 0;
@@ -1167,7 +1109,7 @@ namespace Longan {
         return Math.round(waterlevel)
     }
 
-    //% subcategory=Sensor group="Sensor"
+    //% subcategory=Sensor  
     //% block="value of BME280 %state"
     export function octopus_BME280(state: BME280_state): number {
         switch (state) {
@@ -1235,6 +1177,64 @@ namespace Longan {
         }
     }
 
+    /**
+     * TODO: Set the on-board LED display mode. 
+     * @param mode breath or off , eg: LightMode.BREATH
+     */
+    //% weight=90
+    //% blockId="setLightMode" block="Set light mode to %mode"
+    //% subcategory=Output
+    export function setLightMode(mode: LightMode): void {
+        let buff = pins.createBuffer(4);
+        switch (mode) {
+            case LightMode.BREATH:
+                buff[0] = 0x11;
+                buff[1] = 0x00;
+                buff[2] = 0;
+                buff[3] = 0;
+                pins.i2cWriteBuffer(board_address, buff);
+                buff[0] = 0x12;
+                buff[1] = 150;
+                basic.pause(100);
+                pins.i2cWriteBuffer(board_address, buff);
+                break;
+            case LightMode.OFF:
+                buff[0] = 0x12;
+                buff[1] = 0;
+                buff[2] = 0;
+                buff[3] = 0;
+                pins.i2cWriteBuffer(board_address, buff);
+                buff[0] = 0x11;
+                buff[1] = 160;
+                basic.pause(100);
+                pins.i2cWriteBuffer(board_address, buff);
+                break;
+            default:
+                break;
+        }
+    }
 
+
+
+	/**
+    * TODO: Set the brightness of on-board LED lamp.
+    * @param light brightness, eg: 100
+    */
+    //% weight=89
+    //% blockId=lightIntensity block="Set light intensity to %light"
+    //% light.min=0 light.max=100
+    //% subcategory=Output
+    export function lightIntensity(light: number): void {
+        let buff = pins.createBuffer(4);
+        buff[0] = 0x12;
+        buff[1] = light;
+        buff[2] = 0;
+        buff[3] = 0;
+        pins.i2cWriteBuffer(board_address, buff);
+        basic.pause(100);
+        buff[0] = 0x11;
+        buff[1] = 160;
+        pins.i2cWriteBuffer(board_address, buff);
+    }
 
 }
