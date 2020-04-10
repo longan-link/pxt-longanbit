@@ -9,14 +9,14 @@ This extension is designed to programme and drive the Longanbit, You can [get lo
 ## Code Example
 ```JavaScript
 
-Longan.crashSensorSetup(DigitalPin.P0)
 basic.forever(function () {
-    if (Longan.crashSensor()) {
+    if (Longan.crashSensor(DigitalPin.P2)) {
         Longan.stopMotor(Longan.MotorList.M1)
     } else {
         basic.showNumber(Longan.ReadSoilHumidity(AnalogPin.P1))
     }
 })
+
 
 
 ```
