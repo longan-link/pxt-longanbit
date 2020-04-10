@@ -18,7 +18,6 @@
   "Longan.SideList": "SideList",
   "Longan.WheelList": "ServoList",
   "Longan.crashSensor": "TODO: Checks whether the crash sensor is currently pressed.",
-  "Longan.crashSensorSetup": "TODO: Crash Sensor Setup",
   "Longan.dht11value": "get dht11 temperature and humidity Value",
   "Longan.dht11value|param|dht11pin": "describe parameter here, eg: DigitalPin.P15     ",
   "Longan.fan": "toggle fan",

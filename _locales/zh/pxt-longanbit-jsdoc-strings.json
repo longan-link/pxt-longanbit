@@ -18,7 +18,6 @@
   "Longan.SideList": "侧",
   "Longan.WheelList": "轮子列表",
   "Longan.crashSensor": "检测碰撞传感器是否被按下",
-  "Longan.crashSensorSetup": "初始化碰撞传感器",
   "Longan.dht11value": "获取DHT11温湿度传感器模块的值",
   "Longan.dht11value|param|dht11pin": "引脚",
   "Longan.fan": "改变风扇状态",

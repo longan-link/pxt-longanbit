@@ -1,19 +1,3 @@
-
-enum ADKeys {
-    A = 1,
-    B = 2,
-    C = 3,
-    D = 4,
-    E = 5
-}
-
-enum OnOff {
-    //% block="OFF"
-    Off = 0,
-    //% block="ON"
-    On = 1
-}
-
 /**
 * Functions to longan
 */
@@ -91,45 +75,6 @@ namespace Longan {
     const e6Reg = 0xE6
     const digH6 = 0xE7
 
-    export enum DHT11Type {
-        //% block="temperature(℃)" enumval=0
-        DHT11_temperature_C,
-
-        //% block="temperature(℉)" enumval=1
-        DHT11_temperature_F,
-
-        //% block="humidity(0~100)" enumval=2
-        DHT11_humidity,
-    }
-
-
-    export enum Distance_Unit {
-        //% block="mm" enumval=0
-        Distance_Unit_mm,
-
-        //% block="cm" enumval=1
-        Distance_Unit_cm,
-
-        //% block="inch" enumval=2
-        Distance_Unit_inch,
-    }
-
-
-    export enum BME280_state {
-        //% block="temperature(℃)" enumval=0
-        BME280_temperature_C,
-
-        //% block="humidity(0~100)" enumval=1
-        BME280_humidity,
-
-        //% block="pressure(hPa)" enumval=2
-        BME280_pressure,
-
-        //% block="altitude(M)" enumval=3
-        BME280_altitude,
-    }
-
-
     function setreg(reg: number, dat: number): void {
         let buf = pins.createBuffer(2);
         buf[0] = reg;
@@ -186,6 +131,61 @@ namespace Longan {
         H = (var2 >> 12) / 1024
     }
 
+    export enum DHT11Type {
+        //% block="temperature(℃)" enumval=0
+        DHT11_temperature_C,
+
+        //% block="temperature(℉)" enumval=1
+        DHT11_temperature_F,
+
+        //% block="humidity(0~100)" enumval=2
+        DHT11_humidity,
+    }
+    export enum Distance_Unit {
+        //% block="mm" enumval=0
+        Distance_Unit_mm,
+
+        //% block="cm" enumval=1
+        Distance_Unit_cm,
+
+        //% block="inch" enumval=2
+        Distance_Unit_inch,
+    }
+    export enum BME280_state {
+        //% block="temperature(℃)" enumval=0
+        BME280_temperature_C,
+
+        //% block="humidity(0~100)" enumval=1
+        BME280_humidity,
+
+        //% block="pressure(hPa)" enumval=2
+        BME280_pressure,
+
+        //% block="altitude(M)" enumval=3
+        BME280_altitude,
+    }
+    export enum ADKeys {
+        A = 1,
+        B = 2,
+        C = 3,
+        D = 4,
+        E = 5
+    }
+
+    export enum RelayStateList {
+        //% block="NC|Close NO|Open"
+        On,
+
+        //% block="NC|Open NO|Close"
+        Off
+    }
+    export enum GeneralStateList {
+        //% block="On"
+        On,
+
+        //% block="Off"
+        Off
+    }
 	/**
 	* LightMode
 	*/
@@ -195,7 +195,6 @@ namespace Longan {
         //% block="OFF"
         OFF
     }
-
 	/**
 	* MotorList
 	*/
@@ -745,36 +744,20 @@ namespace Longan {
     }
 
     let Reference_VOLTAGE = 3100
-
-    let crashSensorPin: DigitalPin
-
-    /**
-    * TODO: Crash Sensor Setup
-    */
-    //% blockId=octopus_crashsetup  blockGap=10
-    //% subcategory=Sensor  
-    //% block="Setup crash sensor at pin %crashpin"
-    export function crashSensorSetup(crashpin: DigitalPin): void {
-        crashSensorPin = crashpin;
-        pins.setPull(crashpin, PinPullMode.PullUp)
-    }
-
-
-
     /**
     * TODO: Checks whether the crash sensor is currently pressed.
     */
-    //% blockId=octopus_crash  blockGap=30
+    //% blockId=octopus_crash
     //% subcategory=Sensor
-    //% block="crash sensor pressed"
-    export function crashSensor(): boolean {
-        let a: number = pins.digitalReadPin(crashSensorPin);
-        if (a == 0) {
-            return true;
-        } else return false;
+    //% block="at pin %pin Crash Sensor is pressed"
+    export function crashSensor(pin: DigitalPin): boolean {
+        if (pins.digitalReadPin(pin) == 1) {
+            return true
+        }
+        else {
+            return false
+        }
     }
-
-
 
     /**
     * TODO: get soil moisture(0~100%)
@@ -796,7 +779,6 @@ namespace Longan {
         return Math.round(soilmoisture);
     }
 
-
     /**
     * TODO: get light intensity(0~100%)
     * @param lightintensitypin describe parameter here, eg: AnalogPin.P1
@@ -816,8 +798,6 @@ namespace Longan {
         lightintensity = voltage;
         return Math.round(lightintensity);
     }
-
-
 
 
     /** 
@@ -937,12 +917,11 @@ namespace Longan {
         return Math.round(noise)
     }
 
-
     /**
     Checks if the specified key on the ADkeyboard is pressed.
     */
-    //% subcategory=Input group="Input"
-    //% blockId=octopus_adkeyboard weight=90
+    //% subcategory=Input
+    //% blockId=octopus_adkeyboard
     //% block="ADKeyboard at pin %p | key %k is pressed "
     export function ADKeyboard(p: AnalogPin, k: ADKeys): boolean {
         let a: number = pins.analogReadPin(p);
@@ -963,7 +942,7 @@ namespace Longan {
    Checks whether the motion sensor is currently detecting any motion.
      */
     //% subcategory=Sensor  
-    //% blockId=octopus_pir weight=80 blockGap=30
+    //% blockId=octopus_pir
     //% block="motion detector at pin %p | detects motion"
     export function PIR(p: DigitalPin): boolean {
         let a: number = pins.digitalReadPin(p);
@@ -980,7 +959,6 @@ namespace Longan {
     //% subcategory=Sensor  
     //% blockId=readsonarbit block="Ultrasonic at|pin %pin distance in unit %distance_unit "
     export function sonarbit_distance(pin: DigitalPin, distance_unit: Distance_Unit): number {
-
         // send pulse
         pins.setPull(pin, PinPullMode.PullNone)
         pins.digitalWritePin(pin, 0)
@@ -1015,7 +993,8 @@ namespace Longan {
 
     /**
      * get dht11 temperature and humidity Value
-     * @param dht11pin describe parameter here, eg: DigitalPin.P15     */
+     * @param dht11pin describe parameter here, eg: DigitalPin.P15     
+     */
     //% subcategory=Sensor  
     //% blockId="readdht11" block="at pin %dht11pin value of dht11 %dht11type|"
     export function dht11value(dht11pin: DigitalPin, dht11type: DHT11Type): number {
@@ -1138,19 +1117,16 @@ namespace Longan {
     /**
     * toggle Relay
     */
-    //% blockId=Relay block="at pin %Rjpin Relay toggle to %Relaystate"
-    //% Rjpin.fieldEditor="gridpicker"
-    //% Rjpin.fieldOptions.columns=2
+    //% blockId=Relay block="at pin %pin Relay toggle to %Relaystate"
     //% Relaystate.fieldEditor="gridpicker"
     //% Relaystate.fieldOptions.columns=2
     //% subcategory=Output
-    export function Relay(Rjpin: DigitalPin, Relaystate: OnOff): void {
-        let pin = Rjpin
+    export function Relay(pin: DigitalPin, Relaystate: RelayStateList): void {
         switch (Relaystate) {
-            case OnOff.On:
+            case RelayStateList.On:
                 pins.digitalWritePin(pin, 1)
                 break;
-            case OnOff.Off:
+            case RelayStateList.Off:
                 pins.digitalWritePin(pin, 0)
                 break;
         }
@@ -1159,19 +1135,16 @@ namespace Longan {
     /**
     * toggle fan
     */
-    //% blockId=fan block="at pin %fanpin Relay toggle to %Relaystate"
-    //% fanpin.fieldEditor="gridpicker"
-    //% fanpin.fieldOptions.columns=2
-    //% Relaystate.fieldEditor="gridpicker"
-    //% Relaystate.fieldOptions.columns=2
+    //% blockId=fan block="at pin %pin fan toggle to %Relaystate"
+    //% state.fieldEditor="gridpicker"
+    //% state.fieldOptions.columns=2
     //% subcategory=Output
-    export function fan(fanpin: DigitalPin, Relaystate: OnOff): void {
-        let pin = fanpin
-        switch (Relaystate) {
-            case OnOff.On:
+    export function fan(pin: DigitalPin, state: GeneralStateList): void {
+        switch (state) {
+            case GeneralStateList.On:
                 pins.digitalWritePin(pin, 1)
                 break;
-            case OnOff.Off:
+            case GeneralStateList.Off:
                 pins.digitalWritePin(pin, 0)
                 break;
         }
@@ -1181,7 +1154,6 @@ namespace Longan {
      * TODO: Set the on-board LED display mode. 
      * @param mode breath or off , eg: LightMode.BREATH
      */
-    //% weight=90
     //% blockId="setLightMode" block="Set light mode to %mode"
     //% subcategory=Output
     export function setLightMode(mode: LightMode): void {
@@ -1213,14 +1185,11 @@ namespace Longan {
                 break;
         }
     }
-
-
-
+    
 	/**
     * TODO: Set the brightness of on-board LED lamp.
     * @param light brightness, eg: 100
     */
-    //% weight=89
     //% blockId=lightIntensity block="Set light intensity to %light"
     //% light.min=0 light.max=100
     //% subcategory=Output
