@@ -4,7 +4,7 @@
 
 ![](/images.png/)
 
-This extension is designed to programme and drive the Longanbit, You can [get longanbit from the here](https://www.longan-link.com/store)
+This extension is designed to programme and drive the Longanbit, You can [get longanbit from the here](https://item.taobao.com/item.htm?id=616384887720)
 
 ## Code Example
 ```JavaScript
