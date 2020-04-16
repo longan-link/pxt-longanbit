@@ -751,7 +751,8 @@ namespace Longan {
     //% subcategory=Sensor
     //% block="at pin %pin Crash Sensor is pressed"
     export function crashSensor(pin: DigitalPin): boolean {
-        if (pins.digitalReadPin(pin) == 1) {
+	pins.setPull(pin, PinPullMode.PullUp)
+        if (pins.digitalReadPin(pin) == 0) {
             return true
         }
         else {
