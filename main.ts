@@ -958,18 +958,18 @@ namespace Longan {
      * @param pin describe parameter here, eg: DigitalPin.P16
      */
     //% subcategory=Sensor  
-    //% blockId=readsonarbit block="Ultrasonic at|pin %pin distance in unit %distance_unit "
-    export function sonarbit_distance(pin: DigitalPin, distance_unit: Distance_Unit): number {
+    //% blockId=readsonarbit block="Ultrasonic at Trig %trig Echo %echo distance in unit %distance_unit "
+    export function sonarbit_distance(trig: DigitalPin, echo: DigitalPin,distance_unit: Distance_Unit): number {
         // send pulse
-        pins.setPull(pin, PinPullMode.PullNone)
-        pins.digitalWritePin(pin, 0)
-        control.waitMicros(2)
-        pins.digitalWritePin(pin, 1)
-        control.waitMicros(10)
-        pins.digitalWritePin(pin, 0)
+        pins.setPull(trig, PinPullMode.PullNone)
+        pins.digitalWritePin(trig, 0);
+        control.waitMicros(2);
+        pins.digitalWritePin(trig, 1);
+        control.waitMicros(10);
+        pins.digitalWritePin(trig, 0);
 
         // read pulse
-        let d = pins.pulseIn(pin, PulseValue.High, 23000)  // 8 / 340 = 
+        let d = pins.pulseIn(echo, PulseValue.High, 23000)  // 8 / 340 = 
         let distance = d * 10 * 5 / 3 / 58
 
         if (distance > 4000) distance = 0
