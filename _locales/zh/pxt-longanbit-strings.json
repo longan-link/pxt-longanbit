@@ -65,7 +65,7 @@
   "Longan.setLightMode|block": "设置氛围灯模式 %mode",
   "Longan.setMotorSpeed|block": "设置电机 %motor 速度为 %speed",
   "Longan.setServoAngel|block": "设置舵机 %servo 角度为 %angle",
-  "Longan.sonarbit_distance|block": "连接至 %pin 的超声波测距模块的测距值单位 %distance_unit ",
+  "Longan.sonarbit_distance|block": "连接至 触发%trig 回波%echo的超声波测距模块的测距值单位 %distance_unit ",
   "Longan.stopAllMotor|block": "停止所有电机",
   "Longan.stopMotor|block": "停止电机 %motor",
   "Longan|block": "龙眼",

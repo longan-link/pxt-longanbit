@@ -40,6 +40,5 @@
   "Longan.setMotorSpeed|param|motor": "M1 or M2 motor , eg: MotorList.M1",
   "Longan.setMotorSpeed|param|speed": "motor speed, eg: 100",
   "Longan.sonarbit_distance": "get Ultrasonic(sonar:bit) distance",
-  "Longan.sonarbit_distance|param|distance_unit": "describe parameter here, eg: 1",
-  "Longan.sonarbit_distance|param|pin": "describe parameter here, eg: DigitalPin.P16"
+  "Longan.sonarbit_distance|param|distance_unit": "describe parameter here, eg: 1"
 }

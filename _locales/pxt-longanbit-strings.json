@@ -65,7 +65,7 @@
   "Longan.setLightMode|block": "Set light mode to %mode",
   "Longan.setMotorSpeed|block": "Set motor %motor speed to %speed",
   "Longan.setServoAngel|block": "Set servo %servo angel to %angle",
-  "Longan.sonarbit_distance|block": "Ultrasonic at|pin %pin distance in unit %distance_unit ",
+  "Longan.sonarbit_distance|block": "Ultrasonic at Trig %trig Echo %echo distance in unit %distance_unit ",
   "Longan.stopAllMotor|block": "Stop all motor",
   "Longan.stopMotor|block": "Stop motor %motor",
   "Longan|block": "Longan",
