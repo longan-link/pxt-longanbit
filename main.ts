@@ -4,7 +4,6 @@
 //% color=#3669a6  icon="\uf0b2" block="Longan" blockId="Longan" weight=7
 namespace Longan {
     const board_address = 0x10
-
     // BME280 Addresses
     let BME280_I2C_ADDR = 0x76
     let dig_T1 = getUInt16LE(0x88)
