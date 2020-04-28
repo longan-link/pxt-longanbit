@@ -2,9 +2,15 @@
 
 # Longanbit Package
 
+The product is designed for teaching fundamentals of robotics and AI from kids from kindergarten age to twelfth grade.  It contains the Wukong board from Elecfreaks, many sensors and four servos.  A whole curriculum will be built around it.
+
 ![](/images.png/)
 
 This extension is designed to programme and drive the Longanbit, You can [get longanbit from the here](https://item.taobao.com/item.htm?id=616384887720)
+
+## More information
+
+The educational resources will be shown on [http://learn.longan.link](http://learn.longan.link)
 
 ## Code Example
 ```JavaScript
