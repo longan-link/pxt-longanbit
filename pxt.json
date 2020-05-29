@@ -5,7 +5,7 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "SSD1306_OLED": "github:longan-link/pxt-oled",
+        "SSD1306_OLED": "github:Tinkertanker/pxt-oled-ssd1306",
         "neopixel": "github:elecfreaks/pxt-neopixel"
     },
     "files": [
