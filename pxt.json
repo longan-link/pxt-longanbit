@@ -6,7 +6,7 @@
         "core": "*",
         "radio": "*",
         "SSD1306_OLED": "github:Tinkertanker/pxt-oled-ssd1306",
-        "neopixel": "github:elecfreaks/pxt-neopixel"
+        "neopixel": "github:microsoft/pxt-neopixel"
     },
     "files": [
         "README.md",
